@@ -32,35 +32,32 @@ This app:
    - The user uploads (or uses a default) reference genome in FASTA format.  
    - We count **2-mers** and **3-mers** in the reference.  
    This builds probabilities  
-   ![Equation 1](https://render.githubusercontent.com/render/math?math=P(\text{2-mer}))  
-   and  
-   ![Equation 2](https://render.githubusercontent.com/render/math?math=P(\text{3-mer}%7C\text{2-mer})).
+![P(2-mer)](https://latex.codecogs.com/png.latex?P(\text{2-mer}))
+   and
+![P(3-mer|2-mer)](https://latex.codecogs.com/png.latex?P(\text{3-mer}\mid\text{2-mer})).
+
 
 2. **Score Calculation**  
    1. **Log Probability**  
 
       Instead of raw LaTeX, we use an inline image:
-
-      ![Equation - Log P(S)](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%20%3D%20%5Clog%20P(S_%7B1..2%7D)%20%2B%20%5Csum_%7Bi%3D3%7D%5E%7BL%7D%20%5Clog%20P%5Cbigl(S_i%20%5Cmid%20S_%7Bi-2%7D%2C%20S_%7Bi-1%7D%5Cbigr).)
+   ![Log P(S)](https://latex.codecogs.com/png.latex?\log%20P(S)%20=%20\log%20P(S_{1..2})%20+%20\sum_{i=3}^{L}%20\log%20P\bigl(S_i\%20\mid\%20S_{i-2},\%20S_{i-1}\bigr).)
 
       We work in **log space** to handle very small probabilities safely.
 
    2. **Simulation**  
-      - For each sequence length ![L](https://render.githubusercontent.com/render/math?math=L), the app generates **N_sim** random sequences from the Markov model.  
-      - These yield an empirical distribution of  
-        ![Equation - logP(S)/L](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%20%2F%20L).
-
+      - For each sequence length ![L](https://latex.codecogs.com/png.latex?L), the app generates **N_sim** random sequences from the Markov model.  
+      - These yield an empirical distribution of ![logP(S)/L](https://latex.codecogs.com/png.latex?\log%20P(S)%20%2F%20L).
    3. **Z-score or Percentile**  
       - **Z-score**:  
-        ![Equation - Z-score](https://render.githubusercontent.com/render/math?math=Z%20%3D%20%5Cfrac%7B%5Cbigl(%5Clog%20P(S)%2F%20L%5Cbigr)%20-%20%5Cmu%7D%7B%5Csigma%7D)
+        ![Z = ((log P(S)/L) - mu) / sigma](https://latex.codecogs.com/png.latex?Z%20%3D%20\frac{(\log%20P(S)%2F%20L)%20-%20\mu}{\sigma})
 
         using the simulation’s mean  
-        ![mu](https://render.githubusercontent.com/render/math?math=%5Cmu)  
+        ![mu](https://latex.codecogs.com/png.latex?\mu)
         and standard deviation  
-        ![sigma](https://render.githubusercontent.com/render/math?math=%5Csigma).
-
+              ![sigma](https://latex.codecogs.com/png.latex?\sigma).
       - **Rank**: The fraction of simulated values less than  
-        ![logP(S)/L](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%2F%20L),
+        ![logP(S)/L](https://latex.codecogs.com/png.latex?\log%20P(S)%2F%20L)
         yielding a percentile.
 
 3. **Optional Euclidean Distance Comparison**  
