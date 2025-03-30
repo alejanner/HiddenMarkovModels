@@ -39,9 +39,8 @@ This app:
 
 2. **Score Calculation**  
    1. **Log Probability**  
+logP(S) = logP(S[1..2]) + Σ ( i=3 to L ) logP( S_i | S_{i-2}, S_{i-1} )
 
-      Instead of raw LaTeX, we use an inline image:
-   ![Log P(S)](https://latex.codecogs.com/png.latex?\log%20P(S)%20=%20\log%20P(S_{1..2})%20+%20\sum_{i=3}^{L}%20\log%20P\bigl(S_i\%20\mid\%20S_{i-2},\%20S_{i-1}\bigr).)
 
       We work in **log space** to handle very small probabilities safely.
 
