@@ -36,34 +36,35 @@ This app:
 - Counts **2-mers** and **3-mers** in the reference genome.
 
 This process computes probabilities:
-\[ P(\text{2-mer}) \quad \text{and} \quad P(\text{3-mer}\mid\text{2-mer}) \]
+
+- P(2-mer)  
+- P(3-mer | 2-mer)
 
 ### 2. Score Calculation
 
 #### Log Probability
 
 The log-probability for a sequence \( S \) of length \( L \) is computed as:
-\[
-\log P(S) = \log P(S_{1..2}) + \sum_{i=3}^{L} \log P(S_i \mid S_{i-2}, S_{i-1})
-\]
+
+log P(S) = log P(S[1..2]) + sum from i = 3 to L of log P(S[i] | S[i-2], S[i-1])
 
 Computations are done in **log space** to safely handle small probabilities.
 
 #### Simulation
 
-- For sequence length \( L \), the app generates \( N_{sim} \) random sequences.
-- These form an empirical distribution of \( \frac{\log P(S)}{L} \).
+- For sequence length `L`, the app generates `N_sim` random sequences.
+- These form an empirical distribution of `log P(S) / L`.
 
 #### Z-score or Percentile
 
 - **Z-score**:
-\[
-Z = \frac{\left(\frac{\log P(S)}{L} - \mu\right)}{\sigma}
-\]
+
+Z = (log P(S) / L - μ) / σ
+
 where \( \mu \) and \( \sigma \) are the mean and standard deviation from simulations.
 
 - **Rank Percentile**:
-The percentile of simulated values below the computed \( \frac{\log P(S)}{L} \).
+The percentile of simulated values below the computed `log P(S) / L`.
 
 ### 3. Optional Euclidean Distance Comparison
 
@@ -76,7 +77,7 @@ If a user provides a table with a **distance metric** identified by `seq_id`, th
 - **Multiple Input Methods**:
   - Upload multi-FASTA, paste sequences, or upload ZIP with FASTA files.
 - **Adaptive Simulation**:
-  - Simulation number \( N_{sim} \) adapts to sequence length.
+  - Simulation number `N_sim` adapts to sequence length.
 - **Reports**:
   - **PDF** classification table.
   - **Excel** report with top 100 sequences.
