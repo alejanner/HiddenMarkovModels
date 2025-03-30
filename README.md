@@ -13,6 +13,7 @@ It uses a **2nd-order Markov model (trinucleotides)** to compute a log-probabili
 4. [Usage](#usage)
 5. [Requirements](#requirements)
 6. [Deployment](#deployment)
+7. [Testing the App](#testing-the-app)
 
 ---
 
@@ -127,5 +128,17 @@ Choose either **Z-score** or **Rank Percentile**.
 ### 7. Optional: Merge Z-score with Distance
 
 If using **Z-score**, upload a distance table identified by `seq_id`. Download merged data plots (PNG) and Excel files.
----
+
+## Testing the App
+
+If you want to quickly test this application without creating your own data, you can use the example files provided in the `test_data` folder:
+
+Within the Streamlit interface:
+
+Upload the multi-FASTA file from the test_data folder (e.g. reference_example.fasta) under “Reference Genome”. This will be your sample reference genome.
+
+Under “Sequences to Classify”, select “ZIP” as the input type (if applicable) and upload the file sample_sequences.zip from test_data. This ZIP contains multiple sequences to be classified.
+
+    
+
 
