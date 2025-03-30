@@ -391,7 +391,7 @@ if st.button("Analyze - ParamNsim + Chosen Score Method"):
     # Compute Markov model on reference
     init_2_ref, cond_2_ref = compute_markov_model_trinuc(st.session_state.ref_seq_str)
 
-    # We'll keep a cache of simulation stats for different lengths
+    #  keep a cache of simulation stats for different lengths
     sim_stats_cache = {}  # key: length, value: {mu, sigma, sim_values}
 
     def get_simulation_stats_for_length(L, init_2_ref, cond_2_ref):
@@ -514,9 +514,9 @@ if "classification_results" in st.session_state:
     st.write("""
     **How it works**:
     1. Only applies if you used **Z-score** as your scoring method.
-    2. We extract `(seq_id, zscore)` from your classification results.
+    2. Extract `(seq_id, zscore)` from your classification results.
     3. If you have a table with a distance/metric for the **same IDs**,
-       upload it and we'll merge on `seq_id`.
+       upload it and merge on `seq_id`.
     4. You can **download a plot** of Z-score vs. Distance and also an **Excel** of merged data.
     """)
 
