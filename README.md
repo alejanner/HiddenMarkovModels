@@ -125,7 +125,11 @@ Choose either **Z-score** or **Rank Percentile**.
 
 ### 7. Optional: Merge Z-score with Distance
 
-If using **Z-score**, upload a distance table identified by `seq_id`. Download merged data plots (PNG) and Excel files.
+If using **Z-score**, upload a distance table identified by `seq_id`. Download merged data plots (PNG) and Excel files. It allows you to compare how “in-model” a sequence is (Z-score) with a completely different measure (like Euclidean distance in a feature space, evolutionary distance, or anything else).
+
+You can quickly see if “high Z-score” sequences also appear “close” or “far” by other metrics.
+
+This helps in multi-metric analysis and can guide further filtering or interpretation.
 
 ---
 
