@@ -12,8 +12,7 @@ It uses a **2nd-order Markov model (trinucleotides)** to compute a log-probabili
 4. [Usage](#usage)
 5. [Requirements](#requirements)
 6. [Deployment](#deployment)
-7. [License](#license)
-8. [Acknowledgments](#acknowledgments)
+
 
 ---
 
