@@ -83,7 +83,8 @@ If a user provides a table with a **distance metric** identified by `seq_id`, th
   - **Excel** report with top 100 sequences.
 - **Optional**:
   - Merge **Z-score** with additional **distance metric**.
-  - Download plots (PNG) of distributions or Z-score vs. distance.
+  - Download plots (PNG) of distributions or Z-score vs. distance. It allows you to compare how “in-model” a sequence is (Z-score) with a completely different measure (like Euclidean distance in a feature space, evolutionary distance, or anything else). You can quickly see if “high Z-score” sequences also appear “close” or “far” by other metrics. This helps in multi-metric analysis and can guide further filtering or interpretation.
+
 
 ---
 
@@ -125,11 +126,6 @@ Choose either **Z-score** or **Rank Percentile**.
 
 ### 7. Optional: Merge Z-score with Distance
 
-If using **Z-score**, upload a distance table identified by `seq_id`. Download merged data plots (PNG) and Excel files. It allows you to compare how “in-model” a sequence is (Z-score) with a completely different measure (like Euclidean distance in a feature space, evolutionary distance, or anything else).
-
-You can quickly see if “high Z-score” sequences also appear “close” or “far” by other metrics.
-
-This helps in multi-metric analysis and can guide further filtering or interpretation.
-
+If using **Z-score**, upload a distance table identified by `seq_id`. Download merged data plots (PNG) and Excel files.
 ---
 
