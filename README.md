@@ -13,7 +13,6 @@ It uses a **2nd-order Markov model (trinucleotides)** to compute a log-probabili
 5. [Requirements](#requirements)
 6. [Deployment](#deployment)
 
-
 ---
 
 ## Overview
@@ -32,24 +31,37 @@ This app:
 1. **Reference Genome**  
    - The user uploads (or uses a default) reference genome in FASTA format.  
    - We count **2-mers** and **3-mers** in the reference.  
-   This builds probabilities:![Equation 1](https://render.githubusercontent.com/render/math?math=P(\text{2-mer}))
-   and ![Equation 2](https://render.githubusercontent.com/render/math?math=P(\text{3-mer}|\text{2-mer}))
-
+   This builds probabilities  
+   ![Equation 1](https://render.githubusercontent.com/render/math?math=P(\text{2-mer}))  
+   and  
+   ![Equation 2](https://render.githubusercontent.com/render/math?math=P(\text{3-mer}%7C\text{2-mer})).
 
 2. **Score Calculation**  
    1. **Log Probability**  
-      \[
-      \log P(S) = \log P(S_{1..2}) \;+\; \sum_{i=3}^{L} \log P\bigl(S_i \mid S_{i-2}, S_{i-1}\bigr).
-      \]  
+
+      Instead of raw LaTeX, we use an inline image:
+
+      ![Equation - Log P(S)](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%20%3D%20%5Clog%20P(S_%7B1..2%7D)%20%2B%20%5Csum_%7Bi%3D3%7D%5E%7BL%7D%20%5Clog%20P%5Cbigl(S_i%20%5Cmid%20S_%7Bi-2%7D%2C%20S_%7Bi-1%7D%5Cbigr).)
+
       We work in **log space** to handle very small probabilities safely.
 
    2. **Simulation**  
-      - For each sequence length \(L\), the app generates **N_sim** random sequences from the Markov model.  
-      - These yield an empirical distribution of \(\log P(S) / L\).
+      - For each sequence length ![L](https://render.githubusercontent.com/render/math?math=L), the app generates **N_sim** random sequences from the Markov model.  
+      - These yield an empirical distribution of  
+        ![Equation - logP(S)/L](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%20%2F%20L).
 
    3. **Z-score or Percentile**  
-      - **Z-score**: \(\displaystyle Z = \frac{(\log P(S)/L) - \mu}{\sigma}\), using the simulation’s mean \(\mu\) and standard deviation \(\sigma\).  
-      - **Rank**: The fraction of simulated values that are less than \(\log P(S)/L\), giving a percentile.
+      - **Z-score**:  
+        ![Equation - Z-score](https://render.githubusercontent.com/render/math?math=Z%20%3D%20%5Cfrac%7B%5Cbigl(%5Clog%20P(S)%2F%20L%5Cbigr)%20-%20%5Cmu%7D%7B%5Csigma%7D)
+
+        using the simulation’s mean  
+        ![mu](https://render.githubusercontent.com/render/math?math=%5Cmu)  
+        and standard deviation  
+        ![sigma](https://render.githubusercontent.com/render/math?math=%5Csigma).
+
+      - **Rank**: The fraction of simulated values less than  
+        ![logP(S)/L](https://render.githubusercontent.com/render/math?math=%5Clog%20P(S)%2F%20L),
+        yielding a percentile.
 
 3. **Optional Euclidean Distance Comparison**  
    - If the user has a table with **distance metrics** for each sequence (identified by `seq_id`), the app can **merge** them on `seq_id`, then plot **Z-score vs. Distance**.
@@ -107,16 +119,3 @@ This app:
    - The app merges on `seq_id`, generates a merged preview, and allows you to download a plot (PNG) or an Excel file of the merged data.
 
 ---
-
-## Requirements
-
-A typical `requirements.txt` might look like this:
-```txt
-streamlit==1.19.0
-pandas==1.5.3
-numpy==1.23.5
-biopython==1.81
-matplotlib==3.6.3
-seaborn==0.12.2
-scipy==1.9.3
-fpdf==1.7.2
