@@ -32,7 +32,9 @@ This app:
 1. **Reference Genome**  
    - The user uploads (or uses a default) reference genome in FASTA format.  
    - We count **2-mers** and **3-mers** in the reference.  
-   - This builds probabilities \( P(\text{2-mer}) \) and \( P(\text{3-mer} \mid \text{2-mer}) \).
+   This builds probabilities:![Equation 1](https://render.githubusercontent.com/render/math?math=P(\text{2-mer}))
+   and ![Equation 2](https://render.githubusercontent.com/render/math?math=P(\text{3-mer}|\text{2-mer}))
+
 
 2. **Score Calculation**  
    1. **Log Probability**  
