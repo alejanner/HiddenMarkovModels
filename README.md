@@ -106,7 +106,7 @@ Open [http://localhost:8501](http://localhost:8501) in a browser.
 
 ### 3. Reference Genome
 
-Choose a default snippet or upload your own FASTA file.
+Choose a default snippet or upload your own FASTA file. You can upload a multi-FASTA also. 
 
 ### 4. Sequences to Classify
 
