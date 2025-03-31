@@ -100,7 +100,7 @@ pip install -r requirements.txt
 
 In the repository folder:
 ```bash
-streamlit run dna_markov_app.py
+streamlit run markovAlexanderApproach.py
 ```
 Open [http://localhost:8501](http://localhost:8501) in a browser.
 
